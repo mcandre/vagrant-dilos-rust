@@ -2,7 +2,7 @@
 
 # DISCLAIMER
 
-I currently don't see a (straightforward) way to actually install Rust in DilOS. For now, mcandre/vagrant-dilos-rust is simply broken, pending either rustup support for the SunOS/Solaris/Illumos kernel, or else some rare contributor uploading a "rust" package for DilOS. For my purposes, I just want to install the rustc and cargo tools into SOME modern SunOS/Solaris/Illumos virtual machine, in order to build Rust applications targeting the SunOS/Solaris/Illumos kernel. Effort on that front will likely continue in a mcandre/vagrant-smartos-rust box.
+Currently broken, will likely continue efforts in a mcandre/vagrant-smartos-rust box, as its pkgin repository features rust.
 
 # VAGRANT CLOUD
 
@@ -16,13 +16,19 @@ $ vagrant ssh -c "cd /vagrant && rustc hello.rs && ./hello"
 ...
 ```
 
-# REQUIREMENTS
+# RUNTIME REQUIREMENTS
 
 * [Vagrant](https://www.vagrantup.com)
-* A VM provider, such as [VirtualBox](https://www.virtualbox.org), [VMware](https://www.vmware.com), or [libvirt](https://libvirt.org)
+* The [VirtualBox](https://www.virtualbox.org) hypervisor provider
+
+# BUILDTIME REQUIREMENTS
+
+* [Vagrant](https://www.vagrantup.com)
+* The [VirtualBox](https://www.virtualbox.org) hypervisor provider
+* [make](https://www.gnu.org/software/make/)
 
 # EXPORT
 
 ```console
-$ vagrant destroy -f; vagrant up && vagrant package --output vagrant-dilos-rust.box
+$ make vagrant-dilos-rust.box
 ```
